@@ -6,26 +6,25 @@ public class Optimus_Prime {
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
         int i = 1;
-        int j = 1;
+
         int lowerNumber = 0;
         int upperNumber = 0;
+        boolean isPrimeFound = false;
 
-        while (i <= number) {
+        while (!isPrimeFound) {
 
             if (isPrime(number - i)) {
+                isPrimeFound = true;
                 lowerNumber = number - i;
-                break;
             }
+            if (isPrime(number + i)) {
+                isPrimeFound = true;
+                upperNumber = number + i;
+            }
+
             i++;
         }
 
-        while (j <= number) {
-            if (isPrime(number + j)) {
-                upperNumber = number + j;
-                break;
-            }
-            j++;
-        }
 
         if (closestPrime(number, lowerNumber, upperNumber) == 0) {
             System.out.println("The closest prime numbers to " + number + " are " + lowerNumber + " and " + upperNumber);
